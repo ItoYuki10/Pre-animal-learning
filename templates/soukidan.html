@@ -1,0 +1,43 @@
+{% extends "kamehameha.html" %}
+{% block body %}
+<!--<div class="row">
+    <div class="col s8 offset-s2">
+        <form id="upload_form" action="/bukuuzyutu" method="post" enctype="multipart/form-data">
+            <div class="file-field input-field row">
+                <div class="btn col s2">
+                    <span>ファイルを選択</span>
+                    <input type="file" name="file">
+                </div>
+                <div class="file-path-wrapper col s8">
+                    <input class="file-path validate" placeholder="犬・猫を買う前に知るべきこと" type="text">
+                </div>
+                <div class="col s2">
+                    <button class="btn waves-effect waves-light blue" type="submit">表示</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+-->
+<form id="upload_form" action="/bukuuzyutu" method="post" enctype="multipart/form-data">
+    <div class="btn-square-so-pop">
+                
+                <input type="file" name="file">
+    <button class="btn-square-so-pop" type="submit">表示</button>
+    </div>
+</form>
+
+
+<!-- Display Image -->
+<div class="item">
+<img id="upload_img" class="responsive-img" src={{file_path}} alt="アップロード画像">
+</div>  
+<div style="margin-left:45%;margin-right:20%;">
+<div class="btn-square-so-pop">
+        <form id="start_infer" action="/bukuuzyutu/rougawhowhoken" method="post" enctype="multipart/form-data">
+            <button class="btn-square-so-pop" name="image" type="submit" value={{file_path}}>画像認識</button>
+        </form>
+</div>
+    </div>
+</div>
+{% endblock %}

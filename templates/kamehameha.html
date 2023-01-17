@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Import materialize.css -->
+    <!-- Compiled and minified CSS -->
+   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+   --> <!-- Import materialize.js -->
+    <!-- Compiled and minified JavaScript -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+ <link rel="stylesheet" href="/static/css/yamcha.css">
+-->   
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+</head>
+<body id="top">
+    <!-- ヘッダー -->
+    <header class="header">
+ <!--       <div class="logo">
+            <a href="{{url_for('index')}}"><img src="{{url_for('static',filename='images/logo.svg')}}" alt="KUZIRA CAFE"></a>
+        </div>
+    --> <nav class="nav">
+            <ul>
+                <li><a href="{{url_for('index')}}">使い方</a></li>
+                <li><a href="{{url_for('haikei')}}">投稿</a></li>
+                <li><a href="{{url_for('zukan')}}">図鑑</a></li>
+                <li><a href="{{url_for('bukuuzyutu')}}">画像認識</a></li>
+                <li><a href="{{url_for('contact')}}">評価</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <h1 class="hero menu"></h1>
+
+    <!-- ヘッダーここまで -->
+    <!--<title>犬・猫を買う前に知るべきこと</title>-->
+<main>
+    <div class="row">
+        <!-- header -->
+        <header>
+            <div id="news">
+                <h2>犬・猫を買う前に知るべきこと</h2>
+            </div>
+        </header>
+        
+        {% block body %}
+        {% endblock %}	
+    </div>
+</main>
+</html>

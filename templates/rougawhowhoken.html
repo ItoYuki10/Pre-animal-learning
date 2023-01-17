@@ -1,0 +1,332 @@
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>メニュー | KUZIRA CAFE</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+</head>
+<body id="top">
+    <!-- ヘッダー -->
+    <header class="header">
+   <!--     <div class="logo">
+            <a href="{{url_for('index')}}"><img src="{{url_for('static',filename='images/logo.svg')}}" alt="KUZIRA CAFE"></a>
+        </div>
+    -->        <nav class="nav">
+            <ul>
+                <li><a href="{{url_for('index')}}">使い方</a></li>
+                <li><a href="{{url_for('haikei')}}">投稿</a></li>
+                <li><a href="{{url_for('zukan')}}">図鑑</a></li>
+                <li><a href="{{url_for('bukuuzyutu')}}">画像認識</a></li>
+                <li><a href="{{url_for('contact')}}">評価</a></li>
+
+            </ul>
+        </nav>
+    </header>
+   
+    <!-- ヘッダーここまで -->
+    <h1 class="hero access"></h1>
+<!-- メイン -->
+<main>
+
+<!-- Display Image -->
+<!--<img id="upload_img" class="responsive-img" src={{file_path}} alt="アップロード画像">-->
+
+
+    <div id="news">
+                {% if yamcha_data%}
+                <div style="text-align: center">
+                <h2>画像認識の結果です！</h2>
+                </div>
+                {% else %}
+                <div style="text-align: center">
+                <h2>他の画像を選択してください</h2>
+                </div>
+                {% endif %}
+     </div>
+
+    
+        {% if yamcha_data%}
+            {% for item in yamcha_data %}
+            <div class="items">
+                
+                       {% if item.yamcha_name=='アメリカンカール' %}
+                       <div class="item">
+                        <a href="{{url_for('americankaru_img')}}"><img src="{{url_for('static',filename='gazou/illust/アメリカンカール.jpg')}}"></a>
+                        <a href="{{url_for('americankaru_img')}}"><span class="card-title">{{'アメリカンカール'}}</span></a>
+                        </div>
+                       {% elif item.yamcha_name=='アメリカンコッカ―スパニエル' %}
+                       <div class="item">
+                        <a href="{{url_for('americankokka_img')}}"><img src="{{url_for('static',filename='gazou/illust/アメリカンコッカ―スパニエル.jpg')}}"></a>
+                        <a href="{{url_for('americankokka_img')}}"><span class="card-title">{{'アメリカンコッカ―スパニエル'}}</span></a>
+                        </div>
+                       {% elif item.yamcha_name=='アメリカンショートヘア' %}
+                       <div class="item">
+                        <a href="{{url_for('americansyoto_img')}}"><img src="{{url_for('static',filename='gazou/illust/アメリカンショートヘア.jpg')}}"></a>
+                        <a href="{{url_for('americansyoto_img')}}"><span class="card-title">{{'アメリカンショートヘア'}}</span></a>
+                        </div>
+                       {% elif item.yamcha_name=='イタリアングレーハウンド' %}
+                       <div class="item">
+                        <a href="{{url_for('italian_img')}}"><img src="{{url_for('static',filename='gazou/illust/イタリアングレーハウンド.jpg')}}"></a>
+                        <a href="{{url_for('italian_img')}}"><span class="card-title">{{'イタリアングレーハウンド'}}</span></a>
+                        </div>
+                       {% elif item.yamcha_name=='ウェルシュコーギーペンブローク' %}
+                       <div class="item">
+                        <a href="{{url_for('uxerusyu_img')}}"><img src="{{url_for('static',filename='gazou/illust/ウェルシュコーギーペンブローク.jpg')}}"></a>
+                        <a href="{{url_for('uxerusyu_img')}}"><span class="card-title">{{'ウェルシュコーギーペンブローク'}}</span></a>
+                        </div>
+                       {% elif item.yamcha_name=='エキゾチック' %}
+                       <div class="item">
+                        <a href="{{url_for('ekizo_img')}}"><img src="{{url_for('static',filename='gazou/illust/エキゾチック.jpg')}}"></a>
+                        <a href="{{url_for('ekizo_img')}}"><span class="card-title">{{'エキゾチック'}}</span></a>
+                        </div>
+                       {% elif item.yamcha_name=='カニーンヘンダックスフンド' %}
+                       <div class="item">
+                        <a href="{{url_for('kanin_img')}}"><img src="{{url_for('static',filename='gazou/illust/カニーンヘンダックスフンド.jpg')}}"></a>
+                        <a href="{{url_for('kanin_img')}}"><span class="card-title">{{'カニーンヘンダックスフンド'}}</span></a>
+                        </div>
+                       {% elif item.yamcha_name=='キジトラ' %}
+                       <div class="item">
+                        <a href="{{url_for('kizi_img')}}"><img src="{{url_for('static',filename='gazou/illust/キジトラ.jpg')}}"></a>
+                        <a href="{{url_for('kizi_img')}}"><span class="card-title">{{'キジトラ'}}</span></a>
+                        </div>
+                       {% elif item.yamcha_name=='キャバリアキングチャールズスパニエル' %}
+                       <div class="item">
+                        <a href="{{url_for('kyabaria_img')}}"><img src="{{url_for('static',filename='gazou/illust/キャバリアキングチャールズスパニエル.jpg')}}"></a>
+                        <a href="{{url_for('kyabaria_img')}}"><span class="card-title">{{'キャバリアキングチャールズスパニエル'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ゴールデンレトリバー' %}
+                       <div class="item">
+                        <a href="{{url_for('golden_img')}}"><img src="{{url_for('static',filename='gazou/illust/ゴールデンレトリバー.jpg')}}"></a>
+                        <a href="{{url_for('golden_img')}}"><span class="card-title">{{'ゴールデンレトリバー'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='サイベリアン' %}
+                       <div class="item">
+                        <a href="{{url_for('saiberian_img')}}"><img src="{{url_for('static',filename='gazou/illust/サイベリアン.jpg')}}"></a>
+                        <a href="{{url_for('saiberian_img')}}"><span class="card-title">{{'サイベリアン'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='サバトラ' %}
+                       <div class="item">
+                        <a href="{{url_for('sabatora_img')}}"><img src="{{url_for('static',filename='gazou/illust/サバトラ.jpg')}}"></a>
+                        <a href="{{url_for('sabatora_img')}}"><span class="card-title">{{'サバトラ'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='サビ猫' %}
+                       <div class="item">
+                        <a href="{{url_for('sabineko_img')}}"><img src="{{url_for('static',filename='gazou/illust/サビ猫.jpg')}}"></a>
+                        <a href="{{url_for('sabineko_img')}}"><span class="card-title">{{'サビ猫'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='シーズー' %}
+                       <div class="item">
+                        <a href="{{url_for('sizu_img')}}"><img src="{{url_for('static',filename='gazou/illust/シーズー.jpg')}}"></a>
+                        <a href="{{url_for('sizu_img')}}"><span class="card-title">{{'シーズー'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='シェットランドシープドッグ' %}
+                       <div class="item">
+                        <a href="{{url_for('syetto_img')}}"><img src="{{url_for('static',filename='gazou/illust/シェットランドシープドッグ.jpg')}}"></a>
+                        <a href="{{url_for('syetto_img')}}"><span class="card-title">{{'シェットランドシープドッグ'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='シベリアンハスキー' %}
+                       <div class="item">
+                        <a href="{{url_for('siberian_img')}}"><img src="{{url_for('static',filename='gazou/illust/シベリアンハスキー.jpg')}}"></a>
+                        <a href="{{url_for('siberian_img')}}"><span class="card-title">{{'シベリアンハスキー'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ジャックラッセルテリア' %}
+                       <div class="item">
+                        <a href="{{url_for('jack_img')}}"><img src="{{url_for('static',filename='gazou/illust/ジャックラッセルテリア.jpg')}}"></a>
+                        <a href="{{url_for('jack_img')}}"><span class="card-title">{{'ジャックラッセルテリア'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='スコティッシュフォールド' %}
+                       <div class="item">
+                        <a href="{{url_for('sukote_img')}}"><img src="{{url_for('static',filename='gazou/illust/スコティッシュフォールド.jpg')}}"></a>
+                        <a href="{{url_for('sukote_img')}}"><span class="card-title">{{'スコティッシュフォールド'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ソマリ' %}
+                       <div class="item">
+                        <a href="{{url_for('somari_img')}}"><img src="{{url_for('static',filename='gazou/illust/ソマリ.jpg')}}"></a>
+                        <a href="{{url_for('somari_img')}}"><span class="card-title">{{'ソマリ'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='チワワ' %}
+                       <div class="item">
+                        <a href="{{url_for('tiwawa_img')}}"><img src="{{url_for('static',filename='gazou/illust/チワワ.jpg')}}"></a>
+                        <a href="{{url_for('tiwawa_img')}}"><span class="card-title">{{'チワワ'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='トイプードル' %}
+                       <div class="item">
+                        <a href="{{url_for('toypu_img')}}"><img src="{{url_for('static',filename='gazou/illust/トイプードル.jpg')}}"></a>
+                        <a href="{{url_for('toypu_img')}}"><span class="card-title">{{'トイプードル'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ノルウェージャンフォレストキャット' %}
+                       <div class="item">
+                        <a href="{{url_for('noruxe_img')}}"><img src="{{url_for('static',filename='gazou/illust/ノルウェージャンフォレストキャット.jpg')}}"></a>
+                        <a href="{{url_for('noruxe_img')}}"><span class="card-title">{{'ノルウェージャンフォレストキャット'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='パグ' %}
+                       <div class="item">
+                        <a href="{{url_for('pagu_img')}}"><img src="{{url_for('static',filename='gazou/illust/パグ.jpg')}}"></a>
+                        <a href="{{url_for('pagu_img')}}"><span class="card-title">{{'パグ'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='パピヨン' %}
+                       <div class="item">
+                        <a href="{{url_for('papiyon_img')}}"><img src="{{url_for('static',filename='gazou/illust/パピヨン.jpg')}}"></a>
+                        <a href="{{url_for('papiyon_img')}}"><span class="card-title">{{'パピヨン'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ビーグル' %}
+                       <div class="item">
+                        <a href="{{url_for('biguru_img')}}"><img src="{{url_for('static',filename='gazou/illust/ビーグル.jpg')}}"></a>
+                        <a href="{{url_for('biguru_img')}}"><span class="card-title">{{'ビーグル'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ビジョンフリーゼ' %}
+                       <div class="item">
+                        <a href="{{url_for('bizyon_img')}}"><img src="{{url_for('static',filename='gazou/illust/ビションフリーゼ.jpg')}}"></a>
+                        <a href="{{url_for('bizyon_img')}}"><span class="card-title">{{'ビジョンフリーゼ'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ブリティッシュショートヘア' %}
+                       <div class="item">
+                        <a href="{{url_for('puritexi_img')}}"><img src="{{url_for('static',filename='gazou/illust/ブリティッシュショートヘア.jpg')}}"></a>
+                        <a href="{{url_for('puritexi_img')}}"><span class="card-title">{{'ブリティッシュショートヘア'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='フレンチブルドッグ' %}
+                       <div class="item">
+                        <a href="{{url_for('hurenti_img')}}"><img src="{{url_for('static',filename='gazou/illust/フレンチブルドッグ.jpg')}}"></a>
+                        <a href="{{url_for('hurenti_img')}}"><span class="card-title">{{'フレンチブルドッグ'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ペキニーズ' %}
+                       <div class="item">
+                        <a href="{{url_for('pekini_img')}}"><img src="{{url_for('static',filename='gazou/illust/ペキニーズ.jpg')}}"></a>
+                        <a href="{{url_for('pekini_img')}}"><span class="card-title">{{'ペキニーズ'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ペルシャ' %}
+                       <div class="item">
+                        <a href="{{url_for('perusya_img')}}"><img src="{{url_for('static',filename='gazou/illust/ペルシャ.jpg')}}"></a>
+                        <a href="{{url_for('perusya_img')}}"><span class="card-title">{{'ペルシャ'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ベンガル' %}
+                       <div class="item">
+                        <a href="{{url_for('bengaru_img')}}"><img src="{{url_for('static',filename='gazou/illust/ベンガル.jpg')}}"></a>
+                        <a href="{{url_for('bengaru_img')}}"><span class="card-title">{{'ベンガル'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ボーダーコリー' %}
+                       <div class="item">
+                        <a href="{{url_for('bodakori_img')}}"><img src="{{url_for('static',filename='gazou/illust/ボーダーコリー.jpg')}}"></a>
+                        <a href="{{url_for('bodakori_img')}}"><span class="card-title">{{'ボーダーコリー'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ポメラニアン' %}
+                    <div style="text-align: center">
+                       <div class="item">
+                        <a href="{{url_for('pome_img')}}"><img src="{{url_for('static',filename='gazou/illust/ポメラニアン.jpg')}}"></a>
+                        <a href="{{url_for('pome_img')}}"><span class="card-title">{{'ポメラニアン'}}</span></a>
+                        </div>
+                    </div>
+                       {% elif item.yamcha_name=='マルチーズ' %}
+                       <div class="item">
+                        <a href="{{url_for('maruti_img')}}"><img src="{{url_for('static',filename='gazou/illust/マルチーズ.jpg')}}"></a>
+                        <a href="{{url_for('maruti_img')}}"><span class="card-title">{{'マルチーズ'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='マンチカン' %}
+                       <div class="item">
+                        <a href="{{url_for('manti_img')}}"><img src="{{url_for('static',filename='gazou/illust/マンチカン.jpg')}}"></a>
+                        <a href="{{url_for('manti_img')}}"><span class="card-title">{{'マンチカン'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ミニチュアシュナウザー' %}
+                       <div class="item">
+                        <a href="{{url_for('minisyu_img')}}"><img src="{{url_for('static',filename='gazou/illust/ミニチュアシュナウザー.jpg')}}"></a>
+                        <a href="{{url_for('minisyu_img')}}"><span class="card-title">{{'ミニチュアシュナウザー'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ミニチュアダックスフンド' %}
+                       <div class="item">
+                        <a href="{{url_for('minidakku_img')}}"><img src="{{url_for('static',filename='gazou/illust/ミニチュアダックスフンド.jpg')}}"></a>
+                        <a href="{{url_for('minidakku_img')}}"><span class="card-title">{{'ミニチュアダックスフンド'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ミニチュアピンシャー' %}
+                       <div class="item">
+                        <a href="{{url_for('minipin_img')}}"><img src="{{url_for('static',filename='gazou/illust/ミニチュアピンシャー.jpg')}}"></a>
+                        <a href="{{url_for('minipin_img')}}"><span class="card-title">{{'ミニチュアピンシャー'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ミヌエット' %}
+                       <div class="item">
+                        <a href="{{url_for('minuetto_img')}}"><img src="{{url_for('static',filename='gazou/illust/ミヌエット.jpg')}}"></a>
+                        <a href="{{url_for('minuetto_img')}}"><span class="card-title">{{'ミヌエット'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='メインクーン' %}
+                       <div class="item">
+                        <a href="{{url_for('meinkun_img')}}"><img src="{{url_for('static',filename='gazou/illust/メインクーン.jpg')}}"></a>
+                        <a href="{{url_for('meinkun_img')}}"><span class="card-title">{{'メインクーン'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ヨークシャーテリア' %}
+                       <div class="item">
+                        <a href="{{url_for('yokusya_img')}}"><img src="{{url_for('static',filename='gazou/illust/ヨークシャーテリア.jpg')}}"></a>
+                        <a href="{{url_for('yokusya_img')}}"><span class="card-title">{{'ヨークシャーテリア'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ラガマフィン' %}
+                       <div class="item">
+                        <a href="{{url_for('ragama_img')}}"><img src="{{url_for('static',filename='gazou/illust/ラガマフィン.jpg')}}"></a>
+                        <a href="{{url_for('ragama_img')}}"><span class="card-title">{{'ラガマフィン'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ラグドール' %}
+                       <div class="item">
+                        <a href="{{url_for('ragudoru_img')}}"><img src="{{url_for('static',filename='gazou/illust/ラグドール.jpg')}}"></a>
+                        <a href="{{url_for('ragudoru_img')}}"><span class="card-title">{{'ラグドール'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ラブラドールレトリーバー' %}
+                       <div class="item">
+                        <a href="{{url_for('raburadoru_img')}}"><img src="{{url_for('static',filename='gazou/illust/ラブラドールレトリーバー.jpg')}}"></a>
+                        <a href="{{url_for('raburadoru_img')}}"><span class="card-title">{{'ラブラドールレトリーバー'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='ロシアンブルー' %}
+                       <div class="item">
+                        <a href="{{url_for('rosian_img')}}"><img src="{{url_for('static',filename='gazou/illust/ロシアンブルー.jpg')}}"></a>
+                        <a href="{{url_for('rosian_img')}}"><span class="card-title">{{'ロシアンブルー'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='黒猫' %}
+                       <div class="item">
+                        <a href="{{url_for('kuroneko_img')}}"><img src="{{url_for('static',filename='gazou/illust/黒猫.jpg')}}"></a>
+                        <a href="{{url_for('kuroneko_img')}}"><span class="card-title">{{'黒猫'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='三毛猫' %}
+                       <div class="item">
+                        <a href="{{url_for('mikeneko_img')}}"><img src="{{url_for('static',filename='gazou/illust/三毛猫.jpg')}}"></a>
+                        <a href="{{url_for('mikeneko_img')}}"><span class="card-title">{{'三毛猫'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='柴犬' %}
+                       <div class="item">
+                        <a href="{{url_for('sibainu_img')}}"><img src="{{url_for('static',filename='gazou/illust/柴犬.jpg')}}"></a>
+                        <a href="{{url_for('sibainu_img')}}"><span class="card-title">{{'柴犬'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='秋田犬' %}
+                       <div class="item">
+                        <a href="{{url_for('akitaken_img')}}"><img src="{{url_for('static',filename='gazou/illust/秋田犬.jpg')}}"></a>
+                        <a href="{{url_for('akitaken_img')}}"><span class="card-title">{{'秋田犬'}}</span></a>
+                    </div>
+                       {% elif item.yamcha_name=='茶トラ' %}
+                       <div class="item">
+                        <a href="{{url_for('tyatora_img')}}"><img src="{{url_for('static',filename='gazou/illust/茶トラ.jpg')}}"></a>
+                        <a href="{{url_for('tyatora_img')}}"><span class="card-title">{{'茶トラ'}}</span></a>
+                    </div>
+                       {% else %}
+                       {% endif %}
+                    </div>
+
+            {% endfor %}
+         {% endif %}
+                    <br>
+                    <br>
+                    <br>
+         <div style="margin-left:45%;margin-right:20%;">
+            <div class="btn-square-so-pop">
+                 <button class="btn-square-so-pop" name="top" onclick="location.href='/bukuuzyutu'">他の画像選択</button>
+            </div>    
+        </div>
+</main>
+<!-- メインここまで -->
+    <!-- フッター -->
+    <footer>
+        <div class="gotop">
+            <a href="#top"><img src="{{url_for('static',filename='images/gotop.svg')}}" alt="ページトップへ戻る"></a>
+        </div>
+        <p class="copyright">&copy; 犬・猫を飼う前に知るべきこと</p>
+    </footer>
+    <!-- フッターここまで -->
+</body>
+</html>
+{% endblock %}

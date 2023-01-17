@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>評価 </title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+</head>
+<body id="top">
+    <!-- ヘッダー -->
+    <header class="header">
+   <!--     <div class="logo">
+            <a href="{{url_for('index')}}"><img src="{{url_for('static',filename='images/logo.svg')}}" alt="KUZIRA CAFE"></a>
+        </div>
+    --> <nav class="nav">
+            <ul>
+                <li><a href="{{url_for('index')}}">使い方</a></li>
+                <li><a href="{{url_for('haikei')}}">投稿</a></li>
+                <li><a href="{{url_for('zukan')}}">図鑑</a></li>
+                <li><a href="{{url_for('bukuuzyutu')}}">画像認識</a></li>
+                <li><a href="{{url_for('contact')}}">評価</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- ヘッダーここまで -->
+    <h1 class="hero contact">評価</h1>
+    <!-- メイン -->
+    <main>
+         <!--   <p>
+                <label for="kind"></label><br>
+                <select name="kind" id="kind">
+                    <option value="1"></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                </select>
+            </p>
+            <p>
+                はじめてのご来店ですか？<br>
+                <label><input type="radio" name="first" value="yes" checked>はい</label><br>
+                <label><input type="radio" name="first" value="no">いいえ</label>
+            </p>-->
+            <form action="{{url_for('send_message')}}" method="POST">
+                <h1>当てはまる項目を選んでください</h1>
+                <div for="seibetu" required>性別
+                    <select name="seibetu" required>
+                        <option value=""></option>
+                        <option value="男">男</option>
+                        <option value="女">女</option> 
+                    </select>                       
+                </div>
+
+            <div for="nenndai" required>年代
+                <select name="nenndai" required>
+                    <option value="">選んでね</option>
+                    <option value="１０代">１０代</option>
+                    <option value="２０代">２０代</option>
+                    <option value="３０代">３０代</option>
+                    <option value="４０代">４０代</option>
+                    <option value="５０代">５０代</option>
+                    <option value="６０代">６０代</option>
+                </select>
+            </div>
+            <div>
+                <div for="message" required>自由記載</div>
+                <textarea name="about" required placeholder="好きなことを書いてね" onkeyup="count_down(this);"></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+            </form>
+            <h1>Flask Mail Sending App</h1>
+            <form action="{{url_for('send_message')}}" method="POST">
+                <p>
+                    このアプリケーションの有効性は？<br>
+                    <label><input type="checkbox" name="how" value="friend">非常に不満足</label><br>
+                    <label><input type="checkbox" name="how" value="magazine">不満足</label><br>
+                    <label><input type="checkbox" name="how" value="magazin">不服</label>
+                </p>      
+                
+                <!--  <input type="email" name="email" placeholder="Email" required id="">-->
+                <!--<input type="text" name="subject" placeholder="Subject" required id="">-->
+                <textarea name="message" id="" cols="30" placeholder="Message Body" required rows="10"></textarea>
+                <input type="submit" value="Send Message">
+            </form>
+            <form action="result.html">
+
+           
+           <p>
+                <label for="subject">ご意見があれば・・・。</label><br>
+                <input type="text" name="subject" placeholder="タイトル" id="subject">
+            </p>
+            <p>
+                <label for="message">内容</label><br>
+                <textarea name="message" id="message"></textarea>
+            </p>
+            <p class="submit">
+                <input type="submit" value="送信">
+            </p>
+        </form>
+    </main>
+    <!-- メインここまで -->
+    <!-- フッター -->
+    <footer>
+        <div class="gotop">
+            <a href="#top"><img src="{{url_for('static',filename='images/gotop.svg')}}" alt="ページトップへ戻る"></a>
+        </div>
+        <p class="copyright">&copy; 犬・猫を飼う前に知るべきこと</p>
+    </footer>
+    <!-- フッターここまで -->
+</body>
+</html>
